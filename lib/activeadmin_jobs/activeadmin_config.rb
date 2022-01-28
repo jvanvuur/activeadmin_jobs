@@ -14,10 +14,7 @@ end
 ActiveAdmin.application.load_paths += [File.join(ActiveadminJobs::Engine.root, "app", "admin")]
 
 class ActiveAdmin::Views::Pages::Base
-  alias_method :original_build, :build
-
   def build(*args)
-    original_build(args)
     adj_add_classes_to_body
     current_user_method = ActiveAdmin.application.current_user_method
 
