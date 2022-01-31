@@ -15,7 +15,7 @@ ActiveAdmin.application.load_paths += [File.join(ActiveadminJobs::Engine.root, "
 
 class ActiveAdmin::Views::Pages::Base
   def build(*args)
-    super(*args)
+    super(args)
     current_user_method = ActiveAdmin.application.current_user_method
 
     if current_user_method
