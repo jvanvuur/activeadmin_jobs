@@ -14,13 +14,9 @@ end
 ActiveAdmin.application.load_paths += [File.join(ActiveadminJobs::Engine.root, "app", "admin")]
 
 class ActiveAdmin::Views::Pages::Base
+  alias_method :activeadmin_jobs_original_build, :build
   def build(*args)
-    # copy of build - START
-    set_attribute :lang, I18n.locale
-    build_active_admin_head
-    build_page
-    # copy of build - END
-
+    activeadmin_jobs_original_build(args)
     body = get_elements_by_tag_name("body").first
 
     current_user_method = ActiveAdmin.application.current_user_method
